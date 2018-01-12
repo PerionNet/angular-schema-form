@@ -20,6 +20,9 @@ angular.module('schemaForm').directive('schemaValidate', ['sfValidator', '$parse
         if (form.copyValueTo) {
           ngModel.$viewChangeListeners.push(function() {
             var paths = form.copyValueTo;
+            if (paths[0].indexOf("arrayIndex") > -1) {
+                  paths[0] = paths[0].replace("arrayIndex", scope.arrayIndex)
+              }
             angular.forEach(paths, function(path) {
               sfSelect(path, scope.model, ngModel.$modelValue);
             });
