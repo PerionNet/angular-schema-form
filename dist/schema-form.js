@@ -978,7 +978,7 @@
              * @return {Object} a form field defintion
              */
             this.createStandardForm = stdFormObj;
-          /* End Provider API */
+            /* End Provider API */
 
             this.$get = function() {
 
@@ -1155,8 +1155,8 @@
 
         }]);
 
-  /*  Common code for validating a value against its form and schema definition */
-  /* global tv4 */
+    /*  Common code for validating a value against its form and schema definition */
+    /* global tv4 */
     angular.module('schemaForm').factory('sfValidator', [function() {
 
         var validator = {};
@@ -1310,6 +1310,7 @@
                         scope.appendToArray = function() {
                             var len = list.length;
                             var copy = scope.copyWithIndex(len);
+                            scope.evalExpr(form.addOnClick);
                             schemaForm.traverseForm(copy, function(part) {
 
                                 if (part.key) {
@@ -1349,6 +1350,7 @@
                         };
 
                         scope.deleteFromArray = function(index) {
+                            scope.evalExpr(scope.form.addOnClick, {'modelValue': list[index], form: scope.form, index: index});
                             list.splice(index, 1);
 
                             // Trigger validation.
@@ -1559,10 +1561,10 @@
             };
         }]);
 
-  /*
-   FIXME: real documentation
-   <form sf-form="form"  sf-schema="schema" sf-decorator="foobar"></form>
-   */
+    /*
+     FIXME: real documentation
+     <form sf-form="form"  sf-schema="schema" sf-decorator="foobar"></form>
+     */
 
     angular.module('schemaForm')
         .directive('sfSchema',
