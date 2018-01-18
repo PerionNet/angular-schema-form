@@ -1350,7 +1350,13 @@
                         };
 
                         scope.deleteFromArray = function(index) {
-                            scope.evalExpr(scope.form.addOnClick, {'modelValue': list[index], form: scope.form, index: index});
+                            if (scope.form.addOnClick) {
+                                scope.evalExpr(scope.form.addOnClick, {
+                                    'modelValue': list[index],
+                                    form: scope.form,
+                                    index: index
+                                });
+                            }
                             list.splice(index, 1);
 
                             // Trigger validation.
