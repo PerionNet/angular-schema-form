@@ -19,8 +19,8 @@
 
     try {
         //This throws an expection if module does not exist.
-        angular.module('ui.sortable');
-        deps.push('ui.sortable');
+/*        angular.module('ui.sortable');
+        deps.push('ui.sortable');*/
     } catch (e) {}
 
     try {
